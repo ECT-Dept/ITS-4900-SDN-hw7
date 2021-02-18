@@ -1,0 +1,14 @@
+#vyos-get-version.yml - Get version
+
+#ansible-playbook -vv -i inventory vyos-get-version.yml
+
+- name: VyOS - Get Version Detail
+  hosts: routers
+  tasks:
+    - name: Get config for VyOS devices
+      vyos_facts:
+        gather_subset: all
+
+    - name: Display the config
+      debug:
+        msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"

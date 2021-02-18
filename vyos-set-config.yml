@@ -1,0 +1,68 @@
+#VyOS Config Interfaces
+#ansible-playbook -vvv -i inventory vyos-set-config.yml -l routers
+#ansible-playbook -vvv -i inventory vyos-set-config.yml -l routers --tags hostname,ipv4-config
+#Docs: https://docs.ansible.com/ansible/latest/collections/vyos/vyos
+#Use the depricated commands because they work with the version of Ansible installed
+#Jinja checker: https://jinjafx.io
+#https://jinja.palletsprojects.com/en/2.11.x/templates/#builtin-tests
+#YAML to CSV
+#http://www.convertcsv.com/newsite/yaml-to-csv.htm
+
+- hosts: routers
+  tasks:
+  - name: VyOS - Set hostname
+    vyos_system:
+      host_name: "{{ inventory_hostname }}"
+    tags: hostname
+      
+  - name: VyOS - Config Interfaces
+    vyos_interfaces:
+      config:
+        - name: "{{ item.vyos_if }}"
+          description: "{{ item.desc }}"
+          enabled: "{{ item.enabled }}"
+    tags: interfaces
+    loop: "{{ interfaces }}"
+
+  - name: VyOS - Config IPv4 IPs
+    vyos_l3_interfaces:
+      config:
+        - name: "{{ item.vyos_if }}"
+          ipv4:
+            - address: "{{ item.ipv4_addr }}"
+    tags: ipv4-config
+    when: item.ipv4_addr is defined
+    loop: "{{ interfaces }}"
+    
+  - name: VyOS - Config NAT
+    vyos_config:
+      src: vyos-nat.j2
+    tags: nat-config
+    when: item.nat is defined and item.nat == true #When host var nat = true
+    loop: "{{ interfaces }}"
+
+  - name: VyOS - Config DHCP
+    vyos_config:
+      src: vyos-dhcp.j2
+    when: item.dhcp is defined and item.dhcp == true
+    tags: dhcp-config 
+    loop: "{{ dhcp_pools }}"
+
+  - name: VyOS - Config OpenVPN
+    vyos_config:
+      src: vyos-openvpn.j2
+    tags: openvpn-config
+    when: item.openvpn is defined and item.openvpn == true #When host var openvpn = true
+    loop: "{{ openvpn_tunnels }}"
+
+  - name: VyOS - Remove OpenVPN
+    vyos_config:
+      lines: delete protocols openvpn
+    tags: openvpn-remove
+    when: item.openvpn is defined and item.openvpn == false #When host var openvpn = false
+    loop: "{{ openvpn_tunnels }}"
+
+#  - name: VyOS - Save Configuration
+#    vyos_config:
+#      save: true
+#    tags: vyos-save

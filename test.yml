@@ -1,0 +1,8 @@
+#ansible-playbook -vvv -i inventory test.yml
+#ansible-playbook -vvv -i inventory test.yml -l routers
+#ansible-playbook -vvv -i inventory test.yml -l servers
+
+- hosts: all
+  tasks:
+    - name: run echo command
+      command: /bin/echo Hello ITS Student!

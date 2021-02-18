@@ -1,0 +1,29 @@
+#VyOS and Ansible Ad-Hoc Ansible Tests
+
+#Ansible Ad-Hoc Tests 
+#Check Inventory
+ansible-inventory -i inventory --list -y
+
+#Network Test
+ansible -i inventory all -m ping
+ansible -i inventory all -a "df -h"
+
+
+#Check config on VyOS Routers AFTER they are configed by Ansible
+
+#VyOS CLI DHCP Tests
+show dhcp server statistics 
+show dhcp server leases
+
+#VPCS are unconfigured at start
+#DHCP config
+dhcp
+
+#static IP config
+ip X.X.X.X/Y
+
+#ping 
+ping 8.8.8.8
+
+#Tracroute 
+trace 8.8.8.8

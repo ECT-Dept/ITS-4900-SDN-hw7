@@ -1,0 +1,19 @@
+#VyOS-1 Config
+config
+set interfaces ethernet eth0 description WAN
+set interfaces ethernet eth0 address 132.235.160.W/24
+set protocols static route 0.0.0.0/0 next-hop 132.235.160.254
+commit
+save
+exit
+exit
+
+#VyOS-2 Config
+config
+set interfaces ethernet eth0 description WAN
+set interfaces ethernet eth0 address 10.101.50.V/16
+set protocols static route 0.0.0.0/0 next-hop 10.101.255.254
+commit
+save
+exit
+exit

@@ -1,0 +1,23 @@
+{% if openvpn_tunnels is defined %}
+{% for tunnel in openvpn_tunnels %}
+
+{# THIS IS A COMMENT #}
+{# {{ tunnel }} #}
+
+{% if 'openvpn' in tunnel %}
+
+set interfaces openvpn vtun1 local-address '{{ tunnel['local-address'] }}' subnet-mask '{{ tunnel['subnet-mask'] }}'
+set interfaces openvpn vtun1 local-host '{{ tunnel['local-host'] }}'
+set interfaces openvpn vtun1 local-port '{{ tunnel['local-port'] }}'
+set interfaces openvpn vtun1 mode '{{ tunnel['mode'] }}'
+set interfaces openvpn vtun1 remote-address '{{ tunnel['remote-address'] }}'
+set interfaces openvpn vtun1 remote-host '{{ tunnel['remote-host'] }}'
+set interfaces openvpn vtun1 remote-port '{{ tunnel['remote-port'] }}'
+set interfaces openvpn vtun1 shared-secret-key-file '{{ tunnel['shared-secret-key-file'] }}'
+set interfaces openvpn vtun1 protocol '{{ tunnel['protocol'] }}'
+{% endif %}
+{% if 'persistent-tunnel' is defined %}
+set interfaces openvpn vtun1 persistent-tunnel
+{% endif %}
+{% endfor %}
+{% endif %}

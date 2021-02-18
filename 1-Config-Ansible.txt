@@ -1,0 +1,16 @@
+#Configure Ansible Environment
+
+#Create directory off of home directory
+#All ansible commands will be run in this directory
+
+mkdir hw7
+cd hw7
+
+#Clone Git Repo https://github.com/ECT-Dept/ITS-4900-SDN-hw7.git
+git clone https://github.com/ECT-Dept/ITS-4900-SDN-hw7.git .
+
+#Edit the files to match specific host IPs
+1-Network-and-Object-Config.txt
+inventory/routers.yml
+host_vars/vyos-1.yml
+host_vars/vyos-2.yml

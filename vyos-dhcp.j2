@@ -1,0 +1,18 @@
+{% if dhcp_pools is defined %}
+{% for dhcp_pool in dhcp_pools %}
+
+{# THIS IS A COMMENT #}
+{# {{ dhcp_pool }} #} 
+
+{% if 'dhcp' in dhcp_pool %}
+
+set service dhcp-server shared-network-name '{{ dhcp_pool['dhcp_poolname'] }}' subnet '{{ dhcp_pool['dhcp_subnet'] }}' range '{{ dhcp_pool['dhcp_range1'] }}' start '{{ dhcp_pool['dhcp_range1_start'] }}'
+set service dhcp-server shared-network-name '{{ dhcp_pool['dhcp_poolname'] }}' subnet '{{ dhcp_pool['dhcp_subnet'] }}' range '{{ dhcp_pool['dhcp_range1'] }}' stop '{{ dhcp_pool['dhcp_range1_stop'] }}'
+set service dhcp-server shared-network-name '{{ dhcp_pool['dhcp_poolname'] }}' subnet '{{ dhcp_pool['dhcp_subnet'] }}' dns-server '{{ dhcp_pool['dhcp_dns1'] }}'
+set service dhcp-server shared-network-name '{{ dhcp_pool['dhcp_poolname'] }}' subnet '{{ dhcp_pool['dhcp_subnet'] }}' dns-server '{{ dhcp_pool['dhcp_dns2'] }}'
+set service dhcp-server shared-network-name '{{ dhcp_pool['dhcp_poolname'] }}' subnet '{{ dhcp_pool['dhcp_subnet'] }}' default-router '{{ dhcp_pool['dhcp_default_router'] }}'
+set service dhcp-server shared-network-name '{{ dhcp_pool['dhcp_poolname'] }}' subnet '{{ dhcp_pool['dhcp_subnet'] }}' lease '{{ dhcp_pool['dhcp_lease_time'] }}'
+
+{% endif %}
+{% endfor %}
+{% endif %}

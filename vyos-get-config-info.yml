@@ -1,0 +1,28 @@
+#vyos-get-config-info.yml - Get VyOS Configuration Info
+
+#ansible-playbook -vvv -i inventory vyos-get-config-info.yml
+
+- name: VyOS Get Config Detail
+  hosts: routers
+  tasks:
+  - name: VyOS - Show NIC Config
+    vyos_command:
+      commands:
+      - show interfaces ethernet {{ item }}
+    with_items:
+    - eth0
+    - eth1
+    - eth2
+    - eth3
+    - eth4
+    - eth5
+    - eth6
+    - eth7
+    
+  - name: VyOS - Show Hardware Info
+    vyos_command:
+      commands:
+      - show version
+      - show hardware cpu
+      wait_for:
+        - result[0] contains 'VyOS 1.2.5'

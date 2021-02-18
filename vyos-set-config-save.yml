@@ -1,0 +1,10 @@
+#VyOS Config Interfaces
+#ansible-playbook -vvv -i inventory vyos-set-config-save.yml -l routers
+
+- hosts: routers
+  tasks:
+  - name: VyOS - Save Configuration
+    vyos_config:
+      save: true
+    tags:
+      - vyos-save

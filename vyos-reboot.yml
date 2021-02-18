@@ -1,0 +1,10 @@
+#ansible-playbook -v -i inventory vyos-reboot.yml -l routers
+
+- hosts: all
+  tasks:
+  - name: VyOS - Reboot
+    vyos_command:
+      commands:
+        - sudo reboot
+    tags:
+      - reboot        

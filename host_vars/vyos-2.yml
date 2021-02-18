@@ -1,0 +1,32 @@
+interfaces:
+  - vyos_if: "eth1"
+    desc: "Net2"
+    ipv4_addr: "172.Y.(Z+64).254/24"
+    enabled: "true"
+
+dhcp_pools:
+  - dhcp: true
+    dhcp_subnet: "172.Y.(Z+64).0/24"
+    dhcp_poolname: "NETWORKz64"
+    dhcp_range1: "N64-RANGEz64"
+    dhcp_range1_start: "172.Y.(Z+64).100"
+    dhcp_range1_stop: "172.Y.(Z+64).200"
+    dhcp_dns1: "132.235.9.75"
+    dhcp_dns2: "132.235.200.41"
+    dhcp_default_router: "172.Y.(Z+64).254"
+    dhcp_lease_time: "120"
+
+openvpn_tunnels:
+  - openvpn: true
+    vtun: "1"
+    local-address: "172.Y.(Z+32).2"
+    subnet-mask: "255.255.255.0"
+    local-host: "10.101.50.X"
+    local-port: "1195"
+    mode: "site-to-site"
+    remote-address: "172.Y.(Z+32).2"
+    remote-host: "132.235.160.W"
+    remote-port: "1195"
+    shared-secret-key-file: "/config/auth/openvpn-1.key"
+    protocol: "udp"
+    persistent-tunnel: true
