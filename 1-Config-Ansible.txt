@@ -10,7 +10,7 @@ cd hw7
 git clone https://github.com/ECT-Dept/ITS-4900-SDN-hw7.git .
 
 #Edit the files to match specific host IPs
-1-Network-and-Object-Config.txt
+0-Network-and-Object-Config.txt
 inventory/routers.yml
 host_vars/vyos-1.yml
 host_vars/vyos-2.yml
