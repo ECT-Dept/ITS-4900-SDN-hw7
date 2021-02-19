@@ -9,6 +9,10 @@ cd hw7
 #Clone Git Repo https://github.com/ECT-Dept/ITS-4900-SDN-hw7.git
 git clone https://github.com/ECT-Dept/ITS-4900-SDN-hw7.git .
 
+
+#Make sure to set the itsclass pw in 
+group_vars/routers.yml
+
 #Edit the files to match specific host IPs
 0-Network-and-Object-Config.txt
 inventory/routers-hosts.yml
