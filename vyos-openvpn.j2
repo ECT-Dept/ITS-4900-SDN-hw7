@@ -18,6 +18,7 @@ set interfaces openvpn vtun1 protocol '{{ tunnel['protocol'] }}'
 {% endif %}
 {% if 'persistent-tunnel' is defined %}
 set interfaces openvpn vtun1 persistent-tunnel
+set protocols static route '{{ tunnel['local-address'] }}/24' next-hop '{{ tunnel['remote-address'] }}'
 {% endif %}
 {% endfor %}
 {% endif %}
