@@ -21,7 +21,7 @@
         - name: "{{ item.vyos_if }}"
           description: "{{ item.desc }}"
           enabled: "{{ item.enabled }}"
-    tags: interfaces
+    tags: config-interfaces
     loop: "{{ interfaces }}"
 
   - name: VyOS - Config IPv4 IPs
