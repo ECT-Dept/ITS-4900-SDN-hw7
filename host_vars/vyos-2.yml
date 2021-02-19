@@ -19,10 +19,10 @@ dhcp_pools:
 openvpn_tunnels:
   - openvpn: true
     vtun: "1"
-    network: "172.18.(Z+32).0/24"
+    network: "172.18.Z.0/24"
     local-address: "172.Y.(Z+32).2"
     subnet-mask: "255.255.255.0"
-    local-host: "10.101.50.X"
+    local-host: "10.103.4.X"
     local-port: "1195"
     mode: "site-to-site"
     remote-address: "172.Y.(Z+32).1"
