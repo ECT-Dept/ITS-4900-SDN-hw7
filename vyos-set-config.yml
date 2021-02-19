@@ -57,7 +57,7 @@
 
   - name: VyOS - Remove OpenVPN
     vyos_config:
-      lines: delete protocols openvpn
+      lines: delete interfaces openvpn
     tags: openvpn-remove
     when: item.openvpn is defined and item.openvpn == false #When host var openvpn = false
     loop: "{{ openvpn_tunnels }}"

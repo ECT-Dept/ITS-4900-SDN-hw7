@@ -24,7 +24,7 @@ openvpn_tunnels:
     local-host: "10.101.50.X"
     local-port: "1195"
     mode: "site-to-site"
-    remote-address: "172.Y.(Z+32).2"
+    remote-address: "172.Y.(Z+32).1"
     remote-host: "132.235.160.W"
     remote-port: "1195"
     shared-secret-key-file: "/config/auth/openvpn-1.key"
