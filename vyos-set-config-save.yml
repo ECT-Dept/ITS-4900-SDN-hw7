@@ -1,5 +1,5 @@
 #VyOS Config Interfaces
-#ansible-playbook -vvv -i inventory vyos-set-config-save.yml -l routers
+#ansible-playbook -vvv -i inventory vyos-set-config-save.yml
 
 - hosts: routers
   tasks:

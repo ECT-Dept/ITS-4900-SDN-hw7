@@ -1,4 +1,4 @@
-#ansible-playbook -v -i inventory vyos-reboot.yml -l routers
+#ansible-playbook -v -i inventory vyos-reboot.yml
 
 - hosts: all
   tasks:
