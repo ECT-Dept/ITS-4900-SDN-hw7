@@ -34,13 +34,6 @@
     when: item.ipv4_addr is defined
     loop: "{{ interfaces }}"
     
-  - name: VyOS - Config NAT
-    vyos_config:
-      src: vyos-nat.j2
-    tags: nat-config
-    when: item.nat is defined and item.nat == true #When host var nat = true
-    loop: "{{ interfaces }}"
-
   - name: VyOS - Config DHCP
     vyos_config:
       src: vyos-dhcp.j2
