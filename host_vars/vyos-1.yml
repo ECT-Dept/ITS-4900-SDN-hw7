@@ -1,6 +1,6 @@
 interfaces:
   - vyos_if: "eth1"
-    desc: "Net1"
+    desc: "NetZ"
     ipv4_addr: "172.Y.Z.254/24"
     enabled: "true"
 
@@ -26,7 +26,7 @@ openvpn_tunnels:
     local-port: "1195"
     mode: "site-to-site"
     remote-address: "172.Y.(Z+32).2"
-    remote-host: "10.101.50.X"
+    remote-host: "10.103.4.X"
     remote-port: "1195"
     shared-secret-key-file: "/config/auth/openvpn-1.key"
     protocol: "udp"
