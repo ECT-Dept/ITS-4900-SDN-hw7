@@ -1,6 +1,6 @@
 interfaces:
   - vyos_if: "eth1"
-    desc: "Net2"
+    desc: "Net(Z+64)"
     ipv4_addr: "172.Y.(Z+64).254/24"
     enabled: "true"
 

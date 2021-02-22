@@ -3,4 +3,4 @@ routers:
     vyos-1:
       ansible_host: 132.235.160.W
     vyos-2:
-      ansible_host: 10.101.50.X
+      ansible_host: 10.103.4.X
