@@ -19,7 +19,8 @@ dhcp_pools:
 openvpn_tunnels:
   - openvpn: true
     vtun: "1"
-    network: "172.18.Z.0/24"
+    remote_network: "172.Y.Z.0/24"
+    network: "172.Y.(Z+32).0/24"
     local-address: "172.Y.(Z+32).2"
     subnet-mask: "255.255.255.0"
     local-host: "10.103.4.X"
