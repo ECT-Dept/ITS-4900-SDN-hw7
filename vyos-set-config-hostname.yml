@@ -1,0 +1,9 @@
+#VyOS Config Hostnames
+#ansible-playbook -vvv -i inventory vyos-set-config-hostname.yml
+
+- hosts: routers
+  tasks:
+  - name: VyOS - Set hostname
+    vyos_system:
+      host_name: "{{ inventory_hostname }}"
+    tags: hostname
