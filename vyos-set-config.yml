@@ -1,6 +1,12 @@
 #VyOS Config Interfaces
 #ansible-playbook -vvv -i inventory vyos-set-config.yml
+
+#Runs only tasks specified
 #ansible-playbook -vvv -i inventory vyos-set-config.yml --tags hostname,ipv4-config
+
+#Skips specified tasks, but runs all others
+#ansible-playbook -vvv -i inventory vyos-set-config.yml --skip-tags hostname,ipv4-config
+
 #Docs: https://docs.ansible.com/ansible/latest/collections/vyos/vyos
 #Use the depricated commands because they work with the version of Ansible installed
 #Jinja checker: https://jinjafx.io
@@ -30,6 +36,8 @@
         - name: "{{ item.vyos_if }}"
           ipv4:
             - address: "{{ item.ipv4_addr }}"
+    pause:
+      seconds: 30
     tags: ipv4-config
     when: item.ipv4_addr is defined
     loop: "{{ interfaces }}"
