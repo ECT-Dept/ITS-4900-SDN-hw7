@@ -6,7 +6,6 @@ ansible-inventory -i inventory --list -y
 
 #Network Test
 ansible -i inventory all -m ping
-ansible -i inventory all -a "df -h"
 
 
 #Check config on VyOS Routers AFTER they are configed by Ansible
