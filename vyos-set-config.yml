@@ -36,7 +36,10 @@
         - name: "{{ item.vyos_if }}"
           ipv4:
             - address: "{{ item.ipv4_addr }}"
-
+    tags: ipv4-config
+    when: item.ipv4_addr is defined
+    loop: "{{ interfaces }}"
+    
   - name: VyOS - Config DHCP
     vyos_config:
       src: vyos-dhcp.j2
